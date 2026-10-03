@@ -118,3 +118,40 @@ body[data-panel="help"] #console .viewport{height:calc(100dvh - 188px)!important
 @media(pointer:coarse),(max-width:900px){body[data-panel="help"] #console .viewport{height:calc(100dvh - 156px)!important}}
 @media(orientation:landscape) and (max-height:540px) and (max-width:1100px){body[data-panel="help"] #console .viewport{height:calc(100dvh - 40px)!important}}
 @media(min-width:901px) and (min-height:541px){.viewport{height:clamp(300px,calc(100dvh - 383px),660px)}.instruments{height:140px}}
+/* Immersive mobile flight: the game fills the screen; controls float at its edges. */
+@media(pointer:coarse),(max-width:900px){
+ body[data-panel="flight"]{overflow:hidden;overscroll-behavior:none}
+ body[data-panel="flight"] .shell{padding:0;max-width:none}
+ body[data-panel="flight"] header,body[data-panel="flight"] footer,body[data-panel="flight"] #navigation,body[data-panel="flight"] #combat-readout{display:none!important}
+ body[data-panel="flight"] #console{border:0;box-shadow:none;position:relative}
+ body[data-panel="flight"] #console .viewport{height:100dvh!important;min-height:0!important;max-height:none}
+ body[data-panel="flight"] .view-top,body[data-panel="flight"] .view-bottom{display:none}
+ body[data-panel="flight"] #flight-message{top:calc(env(safe-area-inset-top) + 70px);left:25%;right:10%;font-size:10px}
+ body[data-panel="flight"] .instruments{display:block;position:absolute;left:max(8px,env(safe-area-inset-left));top:calc(env(safe-area-inset-top) + 65px);width:108px;height:66px;background:transparent;border:0;opacity:.75;pointer-events:none}
+ body[data-panel="flight"] .gauge-block,body[data-panel="flight"] .instrument-title{display:none}
+ body[data-panel="flight"] .scanner-block{border:0;padding:0;overflow:visible}
+ body[data-panel="flight"] #scanner{height:66px;margin:0}
+ body[data-panel="flight"] #touch-controls.is-flight{display:block!important;position:absolute!important;inset:0!important;height:100dvh!important;min-height:0!important;padding:0!important;background:none;border:0;pointer-events:none;z-index:4}
+ body[data-panel="flight"] .touch-flight{position:absolute;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));bottom:calc(env(safe-area-inset-bottom) + 12px);display:grid;grid-template-columns:108px 1fr 94px;gap:12px;align-items:end;pointer-events:none}
+ body[data-panel="flight"] .touch-stick{width:108px;height:108px;background:#07131666;border-color:#6c999966;pointer-events:auto}
+ body[data-panel="flight"] .stick-knob{background:#31575266;border-color:#96cbbc99;width:38px;height:38px;left:calc(50% - 19px);top:calc(50% - 19px)}
+ body[data-panel="flight"] .stick-label{display:none}
+ body[data-panel="flight"] .touch-throttle{pointer-events:auto;justify-self:center;display:flex;gap:5px;flex-direction:column}
+ body[data-panel="flight"] .touch-throttle button{width:44px;height:44px;padding:0;background:#06111580;border-color:#61857b66;font-size:22px}
+ body[data-panel="flight"] .touch-throttle small{display:none}
+ body[data-panel="flight"] .touch-weapons{pointer-events:auto;gap:8px}
+ body[data-panel="flight"] .touch-weapons .touch-fire{height:66px;background:#392c1877;border-color:#dfac6999;border-radius:20px;font-size:14px}
+ body[data-panel="flight"] .touch-ordnance button{height:44px;background:#07131680;border-color:#6c999966;border-radius:12px}
+ body[data-panel="flight"] .touch-actions{position:absolute;inset:0;display:block;pointer-events:none}
+ body[data-panel="flight"] .touch-actions>button{position:absolute;pointer-events:auto;background:#07131680;border-color:#6c999966;border-radius:12px;font-size:9px;height:44px;min-height:44px;padding:5px}
+ body[data-panel="flight"] .touch-actions>[data-command="pause"]{top:calc(env(safe-area-inset-top) + 8px);right:calc(env(safe-area-inset-right) + 66px);width:52px}
+ body[data-panel="flight"] .touch-actions>[data-command="more"]{top:calc(env(safe-area-inset-top) + 8px);right:calc(env(safe-area-inset-right) + 8px);width:52px}
+ body[data-panel="flight"] .touch-actions>[data-command="jump"]{bottom:calc(env(safe-area-inset-bottom) + 138px);right:calc(env(safe-area-inset-right) + 12px);width:94px}
+ body[data-panel="flight"] .touch-status{display:block;position:absolute;top:calc(env(safe-area-inset-top) + 14px);left:max(12px,env(safe-area-inset-left));width:calc(100% - 146px);font-size:8px;line-height:1.6;color:#b3c8bd;text-shadow:0 1px 3px #000;pointer-events:none}
+ .compact-weapon{color:var(--amber);font-size:9px;margin-bottom:4px}.compact-meters{max-width:260px}
+ body[data-panel="flight"] #touch-more:not([hidden]){display:grid;position:absolute;left:auto;right:calc(env(safe-area-inset-right) + 10px);top:calc(env(safe-area-inset-top) + 60px);bottom:auto;width:min(310px,calc(100% - 20px));padding:12px;gap:8px;grid-template-columns:repeat(3,1fr);background:#09171af5;border:1px solid #3b5751;border-radius:12px;pointer-events:auto;max-height:calc(100dvh - 80px);overflow:auto}
+ body[data-panel="flight"] #touch-more button{background:#112226;min-height:44px;border-radius:5px}
+ body[data-panel="flight"] .touch-console-return{display:none}
+}
+.touch-status{display:none}
+@media(pointer:coarse),(max-width:900px){body[data-panel="flight"] .touch-status{display:block}}
